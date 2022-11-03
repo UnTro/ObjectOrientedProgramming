@@ -1,9 +1,12 @@
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class Human {
     String fullName;
     int bookingTime;
+    int row;
+    int collumn;
 
     ArrayList<ArrayList<Integer>> wantedTable = new ArrayList<>();
 
@@ -38,21 +41,28 @@ public class Human {
         }
         return fullName;
     }
-    Human( ArrayList<ArrayList<Integer>> availableTables) {
+    Human(ArrayList<ArrayList<Tables>> tables) {
         Random random = new Random();
 
 
+        this.row = random.nextInt(0, tables.size());
+        this.collumn = random.nextInt(0,tables.get(row).size());
 
-        fullName = naming().get(random.nextInt(0,4)).get(random.nextInt(0,4));
-        bookingTime = random.nextInt(1,3);
-        System.out.println("Hi, we have available table  № %n" +  availableTables.toString());
+        this.fullName = naming().get(random.nextInt(0,4)).get(random.nextInt(0,4));
+        this.bookingTime = random.nextInt(1,3);
+        System.out.println("Hi, i want to get table  № " +row+","+collumn +"for " + bookingTime + "hours");
 
 
 
 
 
     }
-    /*
+
+        public int[] parser() {
+        int[] pack = {row, collumn, bookingTime};
+        return pack;
+        }
+     /*
 
     int hours;
     ArrayList<ArrayList<Integer>> wantedTable = new ArrayList<ArrayList<Integer>>();
